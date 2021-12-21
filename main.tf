@@ -39,7 +39,7 @@ resource "kubernetes_deployment" "shopping_service" {
       }
       spec {
         container {
-          image = "docker.io/sathishkumar281995/giftingapp-shopping-service"
+          image = "docker.io/xxxxxxxxxx/giftingapp-shopping-service"
           name  = "shopping-container"
           port {
             container_port = 8082
@@ -100,7 +100,7 @@ resource "kubernetes_deployment" "merchant_service" {
       }
       spec {
         container {
-          image = "docker.io/sathishkumar281995/giftingapp-merchant-service"
+          image = "docker.io/xxxxxxxxxx/giftingapp-merchant-service"
           name  = "merchant-container"
           port {
             container_port = 8081
