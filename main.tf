@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "kubernetes" {
- # config_context = "export KUBE_CONFIG_PATH=C:\\Users\\pasathishkumar\\.kube\\config"
+ # config_context = "export KUBE_CONFIG_PATH=C:\\Users\\admin\\.kube\\config"
 }
 
 resource "kubernetes_namespace" "namespace" {
