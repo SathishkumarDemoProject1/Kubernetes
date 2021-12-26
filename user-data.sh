@@ -16,7 +16,7 @@ After=docker.service
 
 [Service]
 RemainAfterExit=yes
-ExecStart=/usr/bin/docker run --restart=always  -p 8080:8080  docker.io/sathishkumar281995/spring-petclinic
+ExecStart=/usr/bin/docker run --restart=always  -p 80:8080  docker.io/sathishkumar281995/spring-petclinic
 ExecStop=/usr/bin/docker stop $(docker ps -q --filter ancestor=spring-petclinic)
 
 
