@@ -92,7 +92,9 @@ jobs:
 #         # This step uses the identity token to provision an ephemeral certificate
 #         # against the sigstore community Fulcio instance.
 #         run: cosign sign ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}@${{ steps.build-and-push.outputs.digest }}
-
+      - name: credentials
+        run: echo $USER_NAME
+          
       - name: Build and Push images
         run: | 
           cd giftingapp-merchant-service-5731e4266c57
