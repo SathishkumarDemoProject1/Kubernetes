@@ -21,7 +21,7 @@ jobs:
     
     - name: Compiles
       run: | 
-        cd giftingapp-shopping-service-5731e4266c57
+        cd giftingapp-shopping-service-7dac936da945
         mvn compile
     
     - name: Run test
