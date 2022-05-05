@@ -10,10 +10,10 @@ on:
 #     - cron: '20 15 * * *'
   push:
     branches: [ main ]
-    # Publish semver tags as releases.
-    tags: [ 'v*.*.*' ]
+    paths: [giftingapp-merchant-service-5731e4266c57]
   pull_request:
     branches: [ main ]
+    paths: [giftingapp-merchant-service-5731e4266c57]
 
 env:
   # Use docker.io for Docker Hub if empty
