@@ -7,6 +7,27 @@ on:
   pull_request:
     branches: [ main ]
     paths : [giftingapp-shopping-service-7dac936da945]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Log level'     
+        required: true
+        default: 'dev' 
+        type: choice
+        options:
+        - dev
+        - qa
+        - debug 
+      tags:
+        description: 'Test scenario tags'
+        required: false 
+        type: boolean
+        default: true
+      status:
+        description: 'status'
+        type: environment
+        required: true 
+        default: 'testing' 
 
 jobs:
 
