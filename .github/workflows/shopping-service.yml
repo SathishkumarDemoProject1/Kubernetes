@@ -3,8 +3,10 @@ name: Shopping service
 on:
   push:
     branches: [ main ]
+    paths : [giftingapp-shopping-service-7dac936da945]
   pull_request:
     branches: [ main ]
+    paths : [giftingapp-shopping-service-7dac936da945]
 
 jobs:
 
@@ -25,16 +27,20 @@ jobs:
         mvn compile
     
     - name: Run test
-      run: mvn test
+      run: |
+        cd giftingapp-shopping-service-7dac936da945
+        mvn test
     
     - name: Deploy projects in local repo
-      run: mvn install
+      run: |
+        cd giftingapp-shopping-service-7dac936da945
+        mvn install
     
     - name: Login to docker
       run: docker login -u $USER_NAME -p $PASSWORD
     
     - name: Build the docker
-      run: docker build ./ -t sathishkumar281995/giftingapp-shopping-service:latest
+      run: docker build ./giftingapp-shopping-service-7dac936da945 -t sathishkumar281995/giftingapp-shopping-service:latest
     
     - name: Push the docker image
       run: docker push sathishkumar281995/giftingapp-shopping-service:latest
