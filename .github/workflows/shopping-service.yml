@@ -17,22 +17,24 @@ jobs:
       USER_NAME: ${{ secrets.USER_NAME }}
     steps:
     - name: Check out code
-    - uses: actions/checkout@v3
+      uses: actions/checkout@v3
     
     - name: Compiles
-    - run: mvn compile
+      run: | 
+        cd giftingapp-shopping-service-5731e4266c57
+        mvn compile
     
     - name: Run test
-    - run: mvn test
+      run: mvn test
     
     - name: Deploy projects in local repo
-    - run: mvn install
+      run: mvn install
     
     - name: Login to docker
-    - run: docker login -u $USER_NAME -p $PASSWORD
+      run: docker login -u $USER_NAME -p $PASSWORD
     
     - name: Build the docker
-    - run: docker build ./ -t sathishkumar281995/giftingapp-shopping-service:latest
+      run: docker build ./ -t sathishkumar281995/giftingapp-shopping-service:latest
     
     - name: Push the docker image
-    - run: docker push sathishkumar281995/giftingapp-shopping-service:latest
+      run: docker push sathishkumar281995/giftingapp-shopping-service:latest
