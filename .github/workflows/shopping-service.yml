@@ -1,0 +1,38 @@
+name: Shopping service
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    environment: test
+    env:
+      PASSWORD: ${{ secrets.PASSWORD }}
+      USER_NAME: ${{ secrets.USER_NAME }}
+    steps:
+    - name: Check out code
+    - uses: actions/checkout@v3
+    
+    - name: Compiles
+    - run: mvn compile
+    
+    - name: Run test
+    - run: mvn test
+    
+    - name: Deploy projects in local repo
+    - run: mvn install
+    
+    - name: Login to docker
+    - run: docker login -u $USER_NAME -p $PASSWORD
+    
+    - name: Build the docker
+    - run: docker build ./ -t sathishkumar281995/giftingapp-shopping-service:latest
+    
+    - name: Push the docker image
+    - run: docker push sathishkumar281995/giftingapp-shopping-service:latest
