@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        description: 'Log level'     
+        description: 'Environment'     
         required: true
         default: 'dev' 
         type: choice
@@ -18,14 +18,13 @@ on:
         - dev
         - qa
         - debug 
-      tags:
-        description: 'Test scenario tags'
+      run_test:
+        description: 'Run test'
         required: false 
         type: boolean
         default: true
-      status:
-        description: 'status'
-        type: environment
+      artifact_id:
+        description: 'artifact_id'
         required: true 
         default: 'testing' 
 
@@ -43,11 +42,12 @@ jobs:
       uses: actions/checkout@v3
     
     - name: Compiles
-      run: | 
+      run: |
         cd giftingapp-shopping-service-7dac936da945
         mvn compile
     
     - name: Run test
+      if: ${{ github.event.inputs.run_test }}
       run: |
         cd giftingapp-shopping-service-7dac936da945
         mvn test
